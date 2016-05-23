@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello, data!</title>
+        <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+
+    <style>
+
+        body {
+            background: black;
+            margin-left: 100px;
+            margin-top:200px;
+        
+        }
+
+        p {
+            font-family: monospace;
+            color:white; 
+        }
+        input {
+            border: 1px dotted #ccc; 
+            background: white; 
+            font-family: monospace; 
+            padding: 10px 20px; 
+            font-size: 18px; 
+            margin: 20px 10px 20px 0; color: red;
+        }
+        input:focus { background-color:yellow; outline: none;}
+
+    </style>
+    </head>
+    <body>
+        <form name="myform" onSubmit="return handleClick()">
+            <input name="Submit"  type="submit" value="What do you understand by Democracy?" />
+            <input type="text" id="myVal"/>
+        </form>
+
+        <p></p>
+
+
+
+        <script type="text/javascript">
+ 
+            var dataset = [];
+            for(i=0; i<0; i++){
+                dataset.push(Math.round(Math.random()*50));
+            }
+ 
+            var p = d3.select("body").selectAll("p")
+            .data(dataset)
+            .text(function(d,i){return i + " : " + d;});
+ 
+            function handleClick(event){
+                console.log(document.getElementById("myVal").value)
+                draw(document.getElementById("myVal").value)
+                return false;
+            }
+ 
+            function draw(val){
+                d3.select("body").append("p");
+                dataset.push(val);
+                var p = d3.select("body").selectAll("p")
+                .data(dataset)
+                .text(function(d,i){return i + " // " + d;})
+            }
+ 
+        </script>
+ 
+    </body>
+</html>
